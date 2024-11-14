@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    h1 {
+        color: #ff6600;
+        text-align: center;
+        margin-top: 20px; 
+    }
+    
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="number"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    button {
+        background-color: #ff6600;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background-color: #e65c00;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    li {
+        background-color: #fff;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #ff6600;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #e65c00;
+    }
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <form action="/add" method="post">
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" placeholder="DD-MM-YYYY" required>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+        <label for="amount">Amount:</label>
+        <input type="number" step="0.01" id="amount" name="amount" required>
+        <button type="submit">Add Expense</button>
+    </form>
+    <a href="/view">View Expenses</a>
+    <a href="/calculate">Calculate Totals</a>
+</body>
+</html>

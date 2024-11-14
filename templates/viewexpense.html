@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Expenses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #ff6600;
+            text-align: center;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        li:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .expense-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .delete-form {
+            display: inline;
+        }
+        
+        .delete-btn {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        .delete-btn:hover {
+            background-color: #e65c00;
+        }
+        .home{
+            background-color: #ff6600;
+            margin-top: 20px;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <h1>View Expenses</h1>
+    <ul>
+        {% for expense in expenses %}
+            <li>
+                {{ expense[1] }} - {{ expense[2] }} - {{ expense[3] }} - {{ expense[4] }}
+                <form action="{{ url_for('delete', expense_id=expense[0]) }}" method="post" style="display:inline;">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <center>
+        <a href="{{ url_for('home') }}">
+            <button class="home">Return to home page</button>
+        </a>
+    </center>
+    
+</body>
+</html>

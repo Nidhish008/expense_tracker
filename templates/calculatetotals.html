@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Totals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e65c00;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: black;
+            color:white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .subsection {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .yearly-expense {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Total Calculations</h1>
+
+        <div class="section">
+            <div class="section-title">Total Expense</div>
+            <div class="subsection">Total: Rs. {{ total_amount }}</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Yearly Expenses</div>
+            {% if yearly_expenses and yearly_expenses.items %}
+                {% for year, total_yearly_expense in yearly_expenses.items() %}
+                    <div class="subsection">
+                        Year {{ year }}: Rs. {{ total_yearly_expense }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="subsection">No yearly expenses found.</div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <div class="section-title">Monthly Expenses</div>
+            {% if monthly_expenses and monthly_expenses.items %}
+                {% for year_month, total_monthly_expense in monthly_expenses.items() %}
+                    <div class="subsection">
+                        {% set year = year_month[-4:] %}
+                        {% set month = year_month[0:2] | int %}
+                        Year {{ year }}, Month {{ month }}: Rs. {{ total_monthly_expense }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="subsection">No monthly expenses found.</div>
+            {% endif %}
+        </div>
+
+    </div>
+</body>
+</html>
